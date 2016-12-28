@@ -44,3 +44,6 @@ systemctl status bluetooth
   Hardware Class: bluetooth
   Model: "Atheros AR3012 Bluetooth 4.0"
   Device: usb 0x3004 "AR3012 Bluetooth 4.0"
+
+## Solution
+sudo dpkg -i btusb-lp1542743-dkms_0.1_all.deb 
