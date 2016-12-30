@@ -1,15 +1,20 @@
 # ar3k-AthBT-Bluetooth device
 
+## Objective
+Fix pour l'interface bluetooth de l'alienware 13 pouces sous Ubuntu.
+
 ## Useful links
-1.http://www.spinics.net/lists/linux-bluetooth/msg62668.html
-2.https://bugs.launchpad.net/ubuntu/+source/bluez/+bug/1542743
-3.https://bbs.archlinux.org/viewtopic.php?id=201646
-4.https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1502781
+1. http://www.spinics.net/lists/linux-bluetooth/msg62668.html
+2. https://bugs.launchpad.net/ubuntu/+source/bluez/+bug/1542743
+3. https://bbs.archlinux.org/viewtopic.php?id=201646
+4. https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1502781
 
 ## Check current system
+```
 hwinfo | grep -i bluetooth
 rfkill list bluetooth
 $> bluetoothctl > list
+```
 
 ## Check log
 dmesg | grep -i bluetooth
@@ -18,6 +23,7 @@ systemctl status bluetooth
 
 ## Errors
 ### (dmesg | grep -i bluetooth)
+```
 [    8.556340] Bluetooth: Core ver 2.21
 [    8.556356] Bluetooth: HCI device and connection manager initialized
 [    8.556359] Bluetooth: HCI socket layer initialized
@@ -28,22 +34,26 @@ systemctl status bluetooth
 [   38.045796] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
 [   38.045801] Bluetooth: BNEP filters: protocol multicast
 [   38.045806] Bluetooth: BNEP socket layer initialized
+```
 
 
 ### (hwinfo | grep -i bluetooth)
-  E: ID_MODEL_FROM_DATABASE=AR3012 Bluetooth 4.0
-  E: ID_MODEL_FROM_DATABASE=AR3012 Bluetooth 4.0
-  E: ID_USB_PROTOCOL_FROM_DATABASE=Bluetooth
-  E: ID_MODEL_FROM_DATABASE=AR3012 Bluetooth 4.0
-  E: ID_USB_PROTOCOL_FROM_DATABASE=Bluetooth
-  <6>[   38.045796] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
-  <6>[   38.045801] Bluetooth: BNEP filters: protocol multicast
-  <6>[   38.045806] Bluetooth: BNEP socket layer initialized
-  bluetooth 520192 10 bnep,ath3k,btusb,btrtl,btbcm,btintel, Live 0x0000000000000000
+```
+ E: ID_MODEL_FROM_DATABASE=AR3012 Bluetooth 4.0
+ E: ID_MODEL_FROM_DATABASE=AR3012 Bluetooth 4.0
+ E: ID_USB_PROTOCOL_FROM_DATABASE=Bluetooth
+ E: ID_MODEL_FROM_DATABASE=AR3012 Bluetooth 4.0
+ E: ID_USB_PROTOCOL_FROM_DATABASE=Bluetooth
+ <6>[   38.045796] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+ <6>[   38.045801] Bluetooth: BNEP filters: protocol multicast
+ <6>[   38.045806] Bluetooth: BNEP socket layer initialized
+ bluetooth 520192 10 bnep,ath3k,btusb,btrtl,btbcm,btintel, Live 
+ 0x0000000000000000
 81: USB 00.0: 11500 Bluetooth Device
-  Hardware Class: bluetooth
-  Model: "Atheros AR3012 Bluetooth 4.0"
-  Device: usb 0x3004 "AR3012 Bluetooth 4.0"
+ Hardware Class: bluetooth
+ Model: "Atheros AR3012 Bluetooth 4.0"
+ Device: usb 0x3004 "AR3012 Bluetooth 4.0"
+ ```
 
 ## Solution
-sudo dpkg -i btusb-lp1542743-dkms_0.1_all.deb 
+sudo dpkg -i btusb-lp1542743-dkms_0.1_all.deb
